@@ -1,0 +1,24 @@
+package util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class DBConn {
+	public static Connection getConnection() {
+		Connection connection = null;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@db.eunoiaym.net:1521:xe", "JSPUSER", "JSPUSER");
+//			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "board", "1234");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return connection;
+	}
+
+	public static void main(String[] args) {
+		getConnection();
+	}
+}
